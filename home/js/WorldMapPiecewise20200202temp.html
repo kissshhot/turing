@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.minS.js"></script>
+	<script src = "worldS.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1100px;height:650px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+		var name_title = ""
+        var mapName = 'world'
+        var data = [
+        { name: 'China', value: 1 },
+        { name: 'United States', value: 50 },
+        { name: 'United Kingdom', value: 7 },
+        { name: 'Canada', value: 4 },
+        { name: 'Israel', value: 3 },
+        { name: 'Norway', value: 2 },
+        { name: 'France', value: 1 },
+        { name: 'India', value: 1 },
+        { name: 'Switzerland', value: 1 },
+        { name: 'Netherlands', value: 1 },
+        { name: 'Denmark', value: 1 },
+        { name: 'Italy', value: 1 },
+        { name: 'Japan', value: 1 },
+//insertData//
+        ];
+        
+        var option = {
+            title: {
+                //text: "获奖者大学分布图",
+                x: 'center',
+                textStyle: {
+                    fontSize: 24
+                },                
+            },
+            tooltip:{
+                    show: true,
+                    enterable: true,
+                    //triggerOn:'click',
+                    alwaysShowContent:true,
+                    formatter: function(params){
+                        var res = '';
+                        res = params.data[2];
+                        return res
+                    }
+                },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            visualMap: {
+                show: true,
+                left: 'left',
+                top: 'bottom',
+                seriesIndex: [0],
+                type:'piecewise',
+                pieces:[
+                    {min:20, color: 'rgb(254,57,101)'},
+                    {min:10, max:20, color: 'rgb(252,157,154)'},
+                    {min:4, max:10, color: 'rgb(249,205,173)'},
+                    {min:2, max:4, color: 'rgb(200,200,169)'},
+                    {min:0, max:2, color: 'rgb(131,175,155)'}
+                ],            
+                textStyle: {
+                    color: '#000000'
+                }
+            },           
+            geo: {
+                show: true,
+                map: mapName,
+                label: {
+                    normal: {
+                        show: false,
+                        fontSize:12,
+                    },
+                    emphasis: {
+                        show: false,
+                    }
+                },
+                roam: true,
+                itemStyle: {
+                    normal: {
+                        areaColor: '#F6F6F6',
+                        borderColor: '#666666',
+                    },
+                    emphasis: {
+                        areaColor: '#0099CC',
+                    }
+                }
+            },
+            series: [
+                {
+                    type: 'map',
+                    map: mapName,
+                    geoIndex: 0,           
+                    animation: false,
+                    data: data
+                },
+                {
+                    name: '大学',
+                    type: 'effectScatter',
+                    coordinateSystem: 'geo',
+                    geoIndex: 0,
+                    symbolSize: 8,
+                    effectType:'ripple',
+                    itemStyle: {
+                        color: '#3399ff'
+                    },
+                    encode:{
+                        tooltip: 2
+                    },
+                    data : [
+                        [-122,37,'斯坦福大学，29人'],
+                        [-71,43,"麻省理工大学，26人"],
+                        [-122,38,'伯克利加州大学，25人'],
+                        [-74,41,'纽约大学，8人'],
+                        [-80,41,"卡内基梅隆大学，13人"],
+                        [-75,40.5,'普林斯顿大学，16人'],
+                        [0,52,'剑桥大学，7人'],
+                        [-117,34,'加州理工学院，6人'],
+                        [-83.5,42.5,"密歇根大学，6人"],
+                        [-1,52.5,"牛津大学,6人"],
+                        [-80,44,"多伦多大学，6人" ],
+                        [-118.2,34,"洛杉矶加州大学,5人"],
+                        [-73.8,41,"哥伦比亚大学，5人"],
+                        [-77.5,43,"康奈尔大学,4人"],
+                        [-85,42.5,"芝加哥大学，4人"],
+                        [-79.5,36,"杜克大学,3人"],
+                        [35.2,31.7,"希伯来大学，3人"],
+                        [-3,55.9,"爱丁堡大学,3人"],
+                        [-115.5,39,"犹他大学，3人"],
+                        [34.7,31.8,"魏茨曼科学研究学院,3人"],
+                        [-72.9,41.5,"耶鲁大学,3人"],
+                        [-73.9,40.9,"纽约市立学院,2人"],
+                        [35.1,32.8,"以色列理工学院,2人"],
+                        [34.85,32.2,"特拉维夫大学,2人"],
+                        [10,57,"奥胡斯大学,2人"],
+                        [-73.9,42.5,"纽约州立大学奥尔巴尼分校,2人"],
+                        [5,52.2,"阿姆斯特丹大学,2人"],
+                        [-87.4,41.5,"伊利诺伊大学香槟分校,2人"],
+                        [10.8,60.3,"奥斯陆大学,2人"],
+                        [2.5,49,"巴黎大学,2人"],
+                        [-75,40,"宾夕法尼亚大学,2人"],
+                        [-98.5,30,"德克萨斯州大学奥斯汀分校,2人"],
+                        [-79,38,"弗吉尼亚大学,2人"],
+                        [-1.4,52.5,"华威大学,2人"],
+                        [-71.3,42.5,"布兰戴斯大学,1人"],
+                        [114.2,22.46,"香港中文大学,1人"],
+                        [114.2,22.36,"香港城市大学,1人"],
+                        [-72.7,43.5,"达特茅斯学院,1人"],
+                        [2.6,48.8,"巴黎高等师范学院,1人"],
+                        [8.2,47.3,"苏黎世联邦理工学院,1人"],
+                        [-87.4,41.6,"伊利诺伊理工学院,1人"],
+                        [0,51.5,"伦敦帝国学院,1人"],
+                        [0.2,51.6,"伦敦国王学院,1人"],
+                        [135.7,35,"京都大学,1人"],
+                        [121.4,25,"国立台湾大学,1人"],
+                        [115.4,40,"清华大学,1人"],
+
+                    ],
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        // function lookVideoGo(val){
+        //     //console.log('时间 - ',val)
+        // location = '#1966'
+        // }
+    </script>
+</body>
+</html>

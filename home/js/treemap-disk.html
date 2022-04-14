@@ -1,0 +1,1339 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="jquery.minsss.js"></script>
+        <script type="text/javascript" src="echarts.minsss.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+var data = [
+  {
+    "value": 5,
+    "name": "算法分析",
+    "path": "算法分析",
+    "children": [
+      {
+        "value": 1,
+        "name": "Hopcroft, John E 1986",
+        "path": "算法分析/Hopcroft, John E 1986",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1986.jpg',
+        },
+      },
+      "urlx":'0',
+      "urly":'1000'
+      },
+      {
+        "value": 1,
+        "name": "Knuth, Donald Ervin 1974",
+        "path": "算法分析/Knuth, Donald Ervin 1974",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1974.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Lamport, Leslie 2013",
+        "path": "算法分析/Lamport, Leslie 2013",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2013.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Pearl, Judea 2011",
+        "path": "算法分析/Pearl, Judea 2011",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2011.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Tarjan, Robert Endre 1986",
+        "path": "算法分析/Tarjan, Robert Endre 1986",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19862.jpg',
+        },
+      },
+    }
+    ]
+  },
+  {
+    "value": 8,
+    "name": "人工智能",
+    "path": "人工智能",
+    "children": [
+      {
+        "value": 1,
+        "name": "Feigenbaum, Edward A 1994",
+        "path": "人工智能/Feigenbaum, Edward A 1994",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1994.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "McCarthy, John 1971",
+        "path": "人工智能/McCarthy, John 1971",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1971.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Minsky, Marvin 1969",
+        "path": "人工智能/Minsky, Marvin 1969",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1969.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Newell, Allen 1975",
+        "path": "人工智能/Newell, Allen 1975",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1975.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Pearl, Judea 2011",
+        "path": "人工智能/Pearl, Judea 2011",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2011.jpg',
+        },
+      },
+    },
+      {
+        "value": 1,
+        "name": "Reddy, Dabbala Rajagopal (Raj) 1994",
+        "path": "人工智能/Reddy, Dabbala Rajagopal (Raj) 1994",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19942.jpg',
+        },
+      },
+      },
+      {
+        "value": 1,
+        "name": "Simon, Herbert Alexander  1975",
+        "path": "人工智能/Simon, Herbert Alexander  1975",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19752.jpg',
+        },
+      },
+      },
+      {
+        "value": 1,
+        "name": "Valiant, Leslie Gabriel  2010",
+        "path": "人工智能/Valiant, Leslie Gabriel  2010",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2010.jpg',
+        },
+      },
+      }
+    ]
+  },
+  {
+    "value": 1,
+    "name": "组合算法",
+    "path": "组合算法",
+    "children": [
+      {
+        "value": 1,
+        "name": "Karp, Richard Manning  1985",
+        "path": "组合算法/Karp, Richard Manning  1985",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1985.jpg',
+        },
+      },
+      }
+    ]
+  },
+  {
+    "value": 5,
+    "name": "编译器",
+    "path": "编译器",
+    "children": [
+  {
+    "value": 1,
+    "name": "Aho, Alfred Vaino  2020",
+    "path": "编译器/Aho, Alfred Vaino  2020",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2020.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Allen, Frances (\"Fran\") Elizabeth  2006",
+    "path": "编译器/Allen, Frances (\"Fran\") Elizabeth  2006",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2006.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Cocke, John  1987",
+    "path": "编译器/Cocke, John  1987",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1987.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Perlis, Alan J  1966",
+    "path": "编译器/Perlis, Alan J  1966",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1966.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Ullman, Jeffrey David  2020",
+    "path": "编译器/Ullman, Jeffrey David  2020",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20202.jpg',
+        },
+      },
+  }
+    ]
+  },
+  {
+    "value": 7,
+    "name": "计算复杂度",
+    "path": "计算复杂度",
+    "children": [
+  {
+    "value": 1,
+    "name": "Blum, Manuel  1995",
+    "path": "计算复杂度Blum, Manuel  1995",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1995.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Cook, Stephen Arthur  1982",
+    "path": "计算复杂度Cook, Stephen Arthur  1982",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1982.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Goldwasser, Shafi  2012",
+    "path": "计算复杂度Goldwasser, Shafi  2012",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2012.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Hartmanis, Juris  1993",
+    "path": "计算复杂度Hartmanis, Juris  1993",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1993.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Micali, Silvio  2012",
+    "path": "计算复杂度Micali, Silvio  2012",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20122.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Stearns, Richard (\"Dick\") Edwin  1993",
+    "path": "计算复杂度Stearns, Richard (\"Dick\") Edwin  1993",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19932.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Valiant, Leslie Gabriel  2010",
+    "path": "计算复杂度Valiant, Leslie Gabriel  2010",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2010.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 4,
+    "name": "计算机结构",
+    "path": "计算机结构",
+    "children": [
+  {
+    "value": 1,
+    "name": "Brooks, Frederick (\"Fred\")  1999",
+    "path": "计算机结构Brooks, Frederick (\"Fred\")  1999",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1999.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Cocke, John  1987",
+    "path": "计算机结构Cocke, John  1987",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1987.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Thacker, Charles P. (Chuck)  2009",
+    "path": "计算机结构Thacker, Charles P. (Chuck)  2009",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2009.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Wilkes, Maurice V. 1967",
+    "path": "计算机结构Wilkes, Maurice V. 1967",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1967.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 1,
+    "name": "计算机硬件",
+    "path": "计算机硬件",
+    "children": [
+      {
+        "value": 1,
+        "name": "Wilkes, Maurice V. 1967",
+        "path": "计算机硬件/Wilkes, Maurice V. 1967",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1967.jpg',
+        },
+      },
+      }
+    ]
+  },
+  {
+    "value": 7,
+    "name": "密码学",
+    "path": "密码学",
+    "children": [
+  {
+    "value": 1,
+    "name": "Adleman, Leonard (Len) Max 2002",
+    "path": "密码学Adleman, Leonard (Len) Max 2002",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2002.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Blum, Manuel 1995",
+    "path": "密码学Blum, Manuel 1995",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1995.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Goldwasser, Shafi 2012",
+    "path": "密码学Goldwasser, Shafi 2012",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2012.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Micali, Silvio 2012",
+    "path": "密码学Micali, Silvio 2012",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20122.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Rivest, Ronald (Ron) Linn 2002",
+    "path": "密码学Rivest, Ronald (Ron) Linn 2002",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20022.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Shamir, Adi 2002",
+    "path": "密码学Shamir, Adi 2002",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20023.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Yao, Andrew Chi-Chih 2000",
+    "path": "密码学Yao, Andrew Chi-Chih 2000"
+    ,
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2000.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 2,
+    "name": "数据结构",
+    "path": "数据结构",
+    "children": [
+  {
+    "value": 1,
+    "name": "Hopcroft, John E 1986",
+    "path": "数据结构Hopcroft, John E 1986",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1986.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Tarjan, Robert (Bob) Endre 1986",
+    "path": "数据结构Tarjan, Robert (Bob) Endre 1986",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19862.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 4,
+    "name": "数据库",
+    "path": "数据库",
+    "children": [
+  {
+    "value": 1,
+    "name": "Bachman, Charles William 1973",
+    "path": "数据库Bachman, Charles William 1973",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1973.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Codd, Edgar F. (\"Ted\") 1981",
+    "path": "数据库Codd, Edgar F. (\"Ted\") 1981",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1981.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Gray, James (\"Jim\") Nicholas 1998",
+    "path": "数据库Gray, James (\"Jim\") Nicholas 1998",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1998.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Stonebraker, Michael 2014",
+    "path": "数据库Stonebraker, Michael 2014",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2014.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 1,
+    "name": "教育",
+    "path": "教育",
+    "children": [
+      {
+        "value": 1,
+        "name": "Wilkes, Maurice V. 1967",
+        "path": "教育Wilkes, Maurice V. 1967",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1967.jpg',
+        },
+      },
+      }
+    ]
+  },
+  {
+    "value": 1,
+    "name": "纠错代码",
+    "path": "纠错代码",
+    "children": [
+      {
+        "value": 1,
+    "name": "Hamming, Richard W 1968",
+    "path": "教育Hamming, Richard W 1968",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1968.jpg',
+        },
+      },
+      }
+    ]
+  },
+  {
+    "value": 2,
+    "name": "有限自动机",
+    "path": "有限自动机",
+     "children": [
+  {
+    "value": 1,
+    "name": "Rabin, Michael O. 1976",
+    "path": "有限自动机Rabin, Michael O. 1976",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1976.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Scott, Dana Stewart 1976",
+    "path": "有限自动机Scott, Dana Stewart 1976",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19762.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 3,
+    "name": "图形",
+    "path": "图形",
+    "children": [
+  {
+    "value": 1,
+    "name": "Catmull, Edwin E. 2019",
+    "path": "图形Catmull, Edwin E. 2019",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2019.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Hanrahan, Patrick M. 2019",
+    "path": "图形Hanrahan, Patrick M. 2019",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20192.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Sutherland, Ivan 1988",
+    "path": "图形Sutherland, Ivan 1988",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1988.jpg',
+        },
+      },
+  }
+]
+  },
+  {
+    "value": 1,
+    "name": "交互计算",
+    "path": "交互计算",
+    "children": [
+  {
+    "value": 1,
+    "name": "Engelbart, Douglas 1997",
+    "path": "交互计算Engelbart, Douglas 1997",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1997.jpg',
+        },
+      },
+  },
+]
+  },
+  {
+    "value": 2,
+    "name": "互联网通信",
+    "path": "互联网通信",
+    "children": [
+    {
+    "value": 1,
+    "name": "Cerf, Vinton (“Vint”) Gray 2004",
+    "path": "互联网通信Cerf, Vinton (“Vint”) Gray 2004",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2004.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Kahn, Robert (“Bob”) Elliot 2004",
+    "path": "互联网通信Kahn, Robert (“Bob”) Elliot 2004",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20042.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 2,
+    "name": "列表处理",
+    "path": "列表处理",
+    "children": [
+    {
+    "value": 1,
+    "name": "Newell, Allen 1975",
+    "path": "列表处理Newell, Allen 1975",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1975.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Simon, Herbert (\"Herb\") Alexander 1975",
+    "path": "列表处理Simon, Herbert (\"Herb\") Alexander 1975",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19752.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 2,
+    "name": "数值分析",
+    "path": "数值分析",
+    "children": [
+    {
+    "value": 1,
+    "name": "Kahan, William (“Velvel”) Morton 1989",
+    "path": "数值分析Kahan, William (“Velvel”) Morton 1989",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1989.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Wilkinson, James Hardy (\"Jim\") 1970",
+    "path": "数值分析Wilkinson, James Hardy (\"Jim\") 1970",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1970.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 1,
+    "name": "数值方法",
+    "path": "数值方法",
+    "children": [
+    {
+    "value": 1,
+    "name": "Hamming, Richard W 1968",
+    "path": "数值方法Hamming, Richard W 1968",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1968.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 2,
+    "name": "面向对象编程",
+    "path": "面向对象编程",
+    "children": [
+    {
+    "value": 1,
+    "name": "Dahl, Ole-Johan 2001",
+    "path": "面向对象编程Dahl, Ole-Johan 2001",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2001.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Nygaard, Kristen 2001",
+    "path": "面向对象编程Nygaard, Kristen 2001",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20012.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 4,
+    "name": "操作系统",
+    "path": "操作系统",
+    "children": [
+    {
+    "value": 1,
+    "name": "Brooks, Frederick (\"Fred\") 1999",
+    "path": "操作系统Brooks, Frederick (\"Fred\") 1999",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1999.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Liskov, Barbara 2008",
+    "path": "操作系统Liskov, Barbara 2008",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2008.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Ritchie, Dennis M. 1983",
+    "path": "操作系统Ritchie, Dennis M. 1983",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1983.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Thompson, Kenneth Lane 1983",
+    "path": "操作系统Thompson, Kenneth Lane 1983",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19832.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 3,
+    "name": "个人计算",
+    "path": "个人计算",
+    "children": [
+    {
+    "value": 1,
+    "name": "Kay, Alan 2003",
+    "path": "个人计算Kay, Alan 2003",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2003.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Lampson, Butler W 1992",
+    "path": "个人计算Lampson, Butler W 1992",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1992.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Thacker, Charles P. (Chuck) 2009",
+    "path": "个人计算Thacker, Charles P. (Chuck) 2009",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2009.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 2,
+    "name": "验证程序",
+    "path": "验证程序",
+    "children": [
+    {
+    "value": 1,
+    "name": "Dijkstra, Edsger Wybe 1972",
+    "path": "验证程序Dijkstra, Edsger Wybe 1972",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1972.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Pnueli, Amir 1996",
+    "path": "验证程序Pnueli, Amir 1996",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1996.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 3,
+    "name": "程序",
+    "path": "程序",
+    "children": [
+    {
+    "value": 1,
+    "name": "Dijkstra, Edsger Wybe 1972",
+    "path": "程序Dijkstra, Edsger Wybe 1972",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1972.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Knuth, Donald (\"Don\") Ervin 1974",
+    "path": "程序Knuth, Donald (\"Don\") Ervin 1974",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1974.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Perlis, Alan J 1966",
+    "path": "程序Perlis, Alan J 1966",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1966.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 8,
+    "name": "程序语言",
+    "path": "程序语言",
+    "children": [
+    {
+    "value": 1,
+    "name": "Hoare, C. Antony (\"Tony\") R. 1980",
+    "path": "程序语言Hoare, C. Antony (\"Tony\") R. 1980",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1980.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Iverson, Kenneth E. (\"Ken\") 1979",
+    "path": "程序语言Iverson, Kenneth E. (\"Ken\") 1979",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1979.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Kay, Alan 2003",
+    "path": "程序语言Kay, Alan 2003",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2003.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Lamport, Leslie 2013",
+    "path": "程序语言Lamport, Leslie 2013",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2013.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Liskov, Barbara 2008",
+    "path": "程序语言Liskov, Barbara 2008",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2008.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Milner, Arthur John Robin Gorell (\"Robin\") 1991",
+    "path": "程序语言Milner, Arthur John Robin Gorell (\"Robin\") 1991",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1991.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Naur, Peter 2005",
+    "path": "程序语言Naur, Peter 2005",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2005.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Wirth, Niklaus E 1984",
+    "path": "程序语言Wirth, Niklaus E 1984",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1984.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 2,
+    "name": "证明构造",
+    "path": "证明构造",
+    "children": [
+    {
+    "value": 1,
+    "name": "Lamport, Leslie 2013",
+    "path": "证明构造Lamport, Leslie 2013",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2013.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Milner, Arthur John Robin Gorell (\"Robin\") 1991",
+    "path": "证明构造Milner, Arthur John Robin Gorell (\"Robin\") 1991",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1991.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 2,
+    "name": "软件",
+    "path": "软件",
+    "children":[
+    {
+    "value": 1,
+    "name": "Floyd, Robert (Bob) W 1978",
+    "path": "软件Floyd, Robert (Bob) W 1978",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1978.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Stonebraker, Michael 2014",
+    "path": "软件Stonebraker, Michael 2014",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2014.jpg',
+        },
+      },
+  },
+    ] 
+  },
+  {
+    "value": 6,
+    "name": "理论",
+    "path": "理论",
+    "children": [
+    {
+    "value": 1,
+    "name": "Milner, Arthur John Robin Gorell (\"Robin\") 1991",
+    "path": "理论Milner, Arthur John Robin Gorell (\"Robin\") 1991",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1991.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Rabin, Michael O. 1976",
+    "path": "理论Rabin, Michael O. 1976",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1976.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Scott, Dana Stewart 1976",
+    "path": "理论Scott, Dana Stewart 1976",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19762.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Stearns, Richard (\"Dick\") Edwin 1993",
+    "path": "理论Stearns, Richard (\"Dick\") Edwin 1993",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/19932.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Valiant, Leslie Gabriel 2010",
+    "path": "理论Valiant, Leslie Gabriel 2010",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2010.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Yao, Andrew Chi-Chih 2000",
+    "path": "理论Yao, Andrew Chi-Chih 2000",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2000.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 1,
+    "name": "软件工程",
+    "path": "软件工程",
+    "children": [
+    {
+    "value": 1,
+    "name": "Brooks, Frederick (\"Fred\") 1999",
+    "path": "软件工程Brooks, Frederick (\"Fred\") 1999",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1999.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 3,
+    "name": "硬件和软件模型验证",
+    "path": "硬件和软件模型验证",
+    "children": [
+    {
+    "value": 1,
+    "name": "Clarke, Edmund Melson 2007",
+    "path": "硬件和软件模型验证Clarke, Edmund Melson 2007",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2007.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Emerson, E. Allen 2007",
+    "path": "硬件和软件模型验证Emerson, E. Allen 2007",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20072.jpg',
+        },
+      },
+  },
+  {
+    "value": 1,
+    "name": "Sifakis, Joseph 2007",
+    "path": "硬件和软件模型验证Sifakis, Joseph 2007",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/20073.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 1,
+    "name": "计算机系统",
+    "path": "计算机系统",
+    "children":[
+    {
+    "value": 1,
+    "name": "Corbato, Fernando J (\"Corby\") 1990",
+    "path": "计算机系统Corbato, Fernando J (\"Corby\") 1990",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/1990.jpg',
+        },
+      },
+  },
+    ] 
+  },
+  {
+    "value": 1,
+    "name": "机器学习",
+    "path": "机器学习",
+    "children": [
+    {
+    "value": 1,
+    "name": "Valiant, Leslie Gabriel 2010",
+    "path": "机器学习Valiant, Leslie Gabriel 2010",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2010.jpg',
+        },
+      },
+  },
+    ]
+  },
+  {
+    "value": 1,
+    "name": "并行计算",
+    "path": "并行计算",
+    "children": [
+    {
+    "value": 1,
+    "name": "Valiant, Leslie Gabriel 2010",
+    "path": "并行计算Valiant, Leslie Gabriel 2010",
+        "label": {
+          "backgroundColor":{
+            "image": 'imgs/2010.jpg',
+        },
+      },
+  }
+    ]
+  },
+]
+myChart.showLoading();
+run(data);
+  function run(diskData) {
+  myChart.hideLoading();
+  const formatUtil = echarts.format;
+  function getLevelOption() {
+    return [
+      {
+        itemStyle: {
+          borderWidth: 0,
+          gapWidth: 5
+        }
+      },
+      {
+        itemStyle: {
+          gapWidth: 1
+        }
+      },
+      {
+        colorSaturation: [0.35, 0.5],
+        itemStyle: {
+          gapWidth: 1,
+          borderColorSaturation: 0.6
+        }
+      }
+    ];
+  }
+  myChart.setOption(
+    (option = {
+      title: {
+        text: '图灵奖获奖领域分类',
+        left: 'center'
+      },
+      tooltip: {
+        formatter: function (info) {
+          var value = info.value;
+          var treePathInfo = info.treePathInfo;
+          var treePath = [];
+          for (var i = 1; i < treePathInfo.length; i++) {
+            treePath.push(treePathInfo[i].name);
+          }
+          return [
+            '<div class="tooltip-title">' +
+              formatUtil.encodeHTML(treePath.join('/')) +
+              '</div>',
+          ].join('');
+        }
+      },
+      series: [
+        {
+          name: '图灵奖获奖领域分类',
+          type: 'treemap',
+          visibleMin: 300,
+          nodeClick: 'link',
+          label: {
+            show: true,
+            formatter: '{b}'
+          },
+          itemStyle: {
+            color:'#fff',
+            borderColor: '#fff'
+          },
+          levels: getLevelOption(),
+          data: diskData,
+          upperLabel: {
+            show: true
+          }
+        }
+      ]
+    })
+  );
+  }
+//});
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+myChart.on('click', function (param) {
+        window.scrollTo(param.data.urlx,param.data.urly)
+    });
+
+        </script>
+    </body>
+</html>
+    

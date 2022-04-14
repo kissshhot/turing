@@ -1,0 +1,1069 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=sunburst-drink
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+        <style>
+          .chart-container{
+            margin:0 auto;
+          }
+        </style>
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+        
+        <script type="text/javascript" src="echarts.minss.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+const colors = ['#0099ff', '#4169e1', '#fff', '#fff', '#fff'];
+
+var data = [
+  {
+    name: '算法分析 5人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children: [
+      {
+        name: 'Hopcroft, John E 1986',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        }
+      },
+      {
+        name: 'Knuth, Donald Ervin  1974',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Lamport, Leslie  2013',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        }
+      },
+      {
+        name: 'Pearl, Judea  2011',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        }
+      },
+      {
+        name: 'Tarjan, Robert Endre  1986',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        }
+      },
+    ]
+  },
+  {
+    name: '人工智能 8人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+      {
+        name: 'Feigenbaum, Edward A  1994',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'McCarthy, John  1971',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Minsky, Marvin  1969',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Newell, Allen  1975',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Pearl, Judea  2011',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Reddy, Dabbala Rajagopal 1994',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Simon, Herbert Alexander  1975',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Valiant, Leslie Gabriel  2010',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      }
+    ]
+  },
+  {
+    name: '组合算法 1人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children: [
+      {
+        name: 'Karp, Richard Manning  1985',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      }
+    ]
+  },
+  {
+    name: '编译器 5人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children: [
+      {
+        name: 'Aho, Alfred Vaino  2020',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Allen, Frances Elizabeth  2006',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Cocke, John  1987',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Perlis, Alan J  1966',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Ullman, Jeffrey David  2020',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      }
+    ]
+  },
+  {
+    name: '计算复杂度 7人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+      {
+        name: 'Blum, Manuel  1995',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Cook, Stephen Arthur  1982',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Goldwasser, Shafi  2012',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Hartmanis, Juris  1993',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Micali, Silvio  2012',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Stearns, Richard Edwin  1993',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Valiant, Leslie Gabriel  2010',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      }
+    ]
+  },
+  {
+    name: '计算机结构 4人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children: [
+      {
+        name: 'Brooks, Frederick 1999',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Cocke, John  1987',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Thacker, Charles P.  2009',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Wilkes, Maurice V. 1967',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '计算机硬件 1人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+      {
+        name: 'Wilkes, Maurice V. 1967',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '密码学 7人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+      {
+        name: 'Adleman, Leonard Max 2002',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Blum, Manuel 1995',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Goldwasser, Shafi 2012',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Micali, Silvio 2012',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Rivest, Ronald Linn 2002',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Shamir, Adi 2002',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Yao, Andrew Chi-Chih 2000',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '数据结构 2人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+    {
+        name: 'Hopcroft, John E 1986',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Tarjan, Robert (Bob) Endre 1986',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '数据库 4人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children: [
+    {
+        name: 'Bachman, Charles William 1973',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Codd, Edgar F. ("Ted") 1981',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Gray, James ("Jim") Nicholas 1998',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Stonebraker, Michael 2014',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '教育 1人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Wilkes, Maurice V. 1967',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '纠错代码 1人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+    {
+        name: 'Hamming, Richard W 1968',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '有限自动机 2人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+    {
+        name: 'Rabin, Michael O. 1976',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Scott, Dana Stewart 1976',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '图形 3人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Catmull, Edwin E. 2019',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Hanrahan, Patrick M. 2019',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Sutherland, Ivan 1988',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '交互计算 1人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Engelbart, Douglas 1997',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '互联网通信 2人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+    {
+        name: 'Cerf, Vinton Gray 2004',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Kahn, Robert Elliot 2004',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '列表处理 2人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Newell, Allen 1975',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Simon, Herbert Alexander 1975',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '数值分析 3人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children: [
+    {
+        name: 'Kahan, William Morton 1989',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Wilkinson, James Hardy 1970',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '数值方法 1人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Hamming, Richard W 1968',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '面向对象编程 2人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Dahl, Ole-Johan 2001',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Nygaard, Kristen 2001',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '操作系统 4人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Brooks, Frederick ("Fred") 1999',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Liskov, Barbara 2008',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Ritchie, Dennis M. 1983',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Thompson, Kenneth Lane 1983',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '个人计算 3人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children: [
+    {
+        name: 'Kay, Alan 2003',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Lampson, Butler W 1992',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Thacker, Charles P. (Chuck) 2009',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '验证程序 2人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Dijkstra, Edsger Wybe 1972',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Pnueli, Amir 1996',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '程序 3人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Dijkstra, Edsger Wybe 1972',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'John Warner Backus 1977',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Knuth, Donald ("Don") Ervin 1974',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Perlis, Alan J 1966',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '程序语言 8人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Hoare, C. Antony R. 1980',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'John Warner Backus 1977',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Iverson, Kenneth E. 1979',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Kay, Alan 2003',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Lamport, Leslie 2013',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Liskov, Barbara 2008',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Milner, Arthur John Robin Gorell 1991',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Naur, Peter 2005',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Wirth, Niklaus E 1984',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '证明构造 2人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Lamport, Leslie 2013',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Milner, Arthur John Robin Gorell 1991',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '软件 2人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Floyd, Robert (Bob) W 1978',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Stonebraker, Michael 2014',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '理论 6人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Milner, Arthur John Robin Gorell 1991',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Rabin, Michael O. 1976',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Scott, Dana Stewart 1976',
+        value: 1,
+        itemStyle: {
+          color:colors[1]
+        },
+      },
+      {
+        name: 'Stearns, Richard Edwin 1993',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Valiant, Leslie Gabriel 2010',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+      {
+        name: 'Yao, Andrew Chi-Chih 2000',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '软件工程 1人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Brooks, Frederick ("Fred") 1999',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '硬件和软件模型验证 3人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Clarke, Edmund Melson 2007',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Emerson, E. Allen 2007',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+      {
+        name: 'Sifakis, Joseph 2007',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '计算机系统 1人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Corbato, Fernando J 1990',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+  {
+    name: '机器学习 1人',
+    itemStyle: {
+      color: colors[0]
+    },
+    children:[
+    {
+        name: 'Valiant, Leslie Gabriel 2010',
+        value: 1,
+        itemStyle: {
+          color: colors[0]
+        },
+      },
+    ]
+  },
+  {
+    name: '并行计算 1人',
+    itemStyle: {
+      color: colors[1]
+    },
+    children:[
+    {
+        name: 'Valiant, Leslie Gabriel 2010',
+        value: 1,
+        itemStyle: {
+          color: colors[1]
+        },
+      },
+    ]
+  },
+];
+option = {
+  title: {
+    //text: '图灵奖获奖领域分类',
+    textStyle: {
+      fontSize: 24,
+      align: 'center'
+    },
+    subtextStyle: {
+      align: 'center'
+    },
+    left: 'center'
+  },
+  backgroundColor: '#fff',
+  series: {
+    type: 'sunburst',
+    data: data,
+    radius: [0, '95%'],
+    sort: undefined,
+    emphasis: {
+      focus: 'ancestor'
+    },
+    levels: [
+      {},
+      {
+        r0: '15%',
+        r: '55%',
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: '#2E2733'
+        },
+        label: {
+          rotate: 'radial'
+        }
+      },
+      {
+        r0: '55%',
+        r: '58%',
+        label: {
+          position: 'outside',
+          padding: 3,
+          silent: false
+        },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: '#2E2733'
+        }
+      }
+    ]
+  }
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+    
